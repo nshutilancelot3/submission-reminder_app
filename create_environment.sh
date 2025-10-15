@@ -81,4 +81,5 @@ fi
 #scripts excecutable
 chmod +x $lance_dir/app/reminder.sh
 chmod +x $lance_dir/modules/functions.sh
+chmod +x $lance_dir/assets/submissions.txt
 chmod +x $lance_dir/startup.sh
