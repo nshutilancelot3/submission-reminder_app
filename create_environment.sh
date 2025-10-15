@@ -67,3 +67,19 @@ echo "Days remaining to submit: $DAYS_REMAINING days"
 echo "--------------------------------------------"
 
 check_submissions $submissions_file' > $lance_dir/app/reminder.sh
+
+#checking if reminder exists
+echo '
+#!/bin/bash
+if [ -f "./app/reminder.sh" ]; then
+    ./app/reminder.sh
+else
+    echo "Failed to create reminder.sh not found in app/ directory"
+exit 1
+fi
+' > $lance_dir/startup.sh
+#scripts excecutable
+chmod +x $lance_dir/app/reminder.sh
+chmod +x $lance_dir/modules/functions.sh
+chmod +x $lance_dir/assets/submissions.txt
+chmod +x $lance_dir/startup.sh
