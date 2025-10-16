@@ -33,19 +33,13 @@ if [[ -z $assignment ]]; then
     echo "assignment cannot be empty"
     exit 1
 fi
-if [[ -z $days ]]; then
+if ! [[ "$days" =~ ^[0-9]+$ ]]; then
     echo "days cannot be empty"
     exit 1
 fi
-days=$(echo "$days" | xargs)
 
 if [[ ! $assignment =~ ^[a-zA-Z0-9\ ]+$ ]]; then
     echo "assignment is invalid"
-    exit 1
-fi
-
-if [[ ! $days =~ ^[0-9]+$ ]]; then
-    echo "days is invalid"
     exit 1
 fi
 
@@ -58,8 +52,8 @@ fi
 
 #updating config file
 cat <<EOF > $config_file
-ASSIGNMENT="$assignment"
-DAYS_REAMAINING=$days
+ASSIGNMENT="$matched_assignment"
+DAYS_REMAINING=$days
 EOF
 
 read -p "Do you want to run the app? (y/n): " runAppChoice
