@@ -50,7 +50,7 @@ if [[ -z $matched_assignment ]]; then
     exit 1
 fi
 
-#updating config file
+#updating config file 
 cat <<EOF > $config_file
 ASSIGNMENT="$matched_assignment"
 DAYS_REMAINING=$days
